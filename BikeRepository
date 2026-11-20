@@ -2,10 +2,6 @@ package campusbikeshare.model;
 
 import java.util.List;
 
-/**
- * Contract for storing and retrieving Bike records. The controller depends
- * only on this interface, so storage can be swapped (in-memory, SQLite, ...).
- */
 public interface BikeRepository {
 
     /** Returns every bike currently stored. */
