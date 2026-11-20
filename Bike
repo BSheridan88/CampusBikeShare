@@ -1,8 +1,5 @@
 package campusbikeshare.model;
 
-/**
- * Entity class representing a single shared bicycle in the campus fleet.
- */
 public class Bike {
     private int id;
     private String tag;
@@ -10,7 +7,7 @@ public class Bike {
     private double hourlyRate;
     private boolean available;
 
-    /** No-arg constructor; id of 0 means "not yet saved". */
+ 
     public Bike() {
     }
 
