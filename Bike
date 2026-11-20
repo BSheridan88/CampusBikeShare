@@ -1,0 +1,69 @@
+package campusbikeshare.model;
+
+/**
+ * Entity class representing a single shared bicycle in the campus fleet.
+ */
+public class Bike {
+    private int id;
+    private String tag;
+    private String model;
+    private double hourlyRate;
+    private boolean available;
+
+    /** No-arg constructor; id of 0 means "not yet saved". */
+    public Bike() {
+    }
+
+    public Bike(String tag, String model, double hourlyRate, boolean available) {
+        this.tag = tag;
+        this.model = model;
+        this.hourlyRate = hourlyRate;
+        this.available = available;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public double getHourlyRate() {
+        return hourlyRate;
+    }
+
+    public void setHourlyRate(double hourlyRate) {
+        this.hourlyRate = hourlyRate;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Bike{id=%d, tag='%s', model='%s', rate=$%.2f/hr, status=%s}",
+                id, tag, model, hourlyRate, available ? "available" : "in use");
+    }
+}
