@@ -4,19 +4,14 @@ import java.util.List;
 
 public interface BikeRepository {
 
-    /** Returns every bike currently stored. */
+
     List<Bike> findAll();
 
-    /** Returns the bike with the given id, or null if none exists. */
     Bike findById(int id);
 
-    /**
-     * Saves a bike. A bike with id 0 is inserted and given a new unique id;
-     * a bike with an existing id replaces the stored record.
-     * Returns the saved bike.
-     */
+  
     Bike save(Bike bike);
 
-    /** Removes the bike with the given id (no effect if it does not exist). */
+  
     void deleteById(int id);
 }
