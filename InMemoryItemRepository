@@ -1,0 +1,55 @@
+package campusbikeshare.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class InMemoryBikeRepository implements BikeRepository {
+    private final List<Bike> items = new ArrayList<>();
+    private int nextId = 1;
+
+    @Override
+    public List<Bike> findAll() {
+        // Returns a defensive copy so external callers cannot mutate the internal list (Unit 7)
+        return new ArrayList<>(items);
+    }
+
+    @Override
+    public Bike findById(int id) {
+        for (Bike bike : items) {
+            if (bike.getId() == id) {
+                return bike;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Bike save(Bike bike) {
+        if (bike == null) {
+            throw new IllegalArgumentException("Cannot save a null bike.");
+        }
+
+        if (bike.getId() == 0) {
+            // Insert new record
+            bike.setId(nextId++);
+            items.add(bike);
+            return bike;
+        } else {
+            // Update existing record in-place to preserve list order
+            for (int i = 0; i < items.size(); i++) {
+                if (items.get(i).getId() == bike.getId()) {
+                    items.set(i, bike);
+                    return bike;
+                }
+            }
+            // If a non-zero ID wasn't found in the list, add it
+            items.add(bike);
+            return bike;
+        }
+    }
+
+    @Override
+    public void deleteById(int id) {
+        items.removeIf(bike -> bike.getId() == id);
+    }
+}
